@@ -1000,6 +1000,14 @@ def main():
 # Define some global variables
 if (__name__ == "__main__"):
 
+    if len(sys.argv) < 2:
+        print("Usage: python GreekPPCompiler.py <filename.gr>")
+        sys.exit(1)
+
+    if not sys.argv[1].lower().endswith(".gr"):
+        print("Error: Invalid file extension. Input file should end with '.gr'")
+        sys.exit(1)
+
     # keywords of the Greek++ language
     keywords = {"πρόγραμμα", "δήλωση",
                 "εάν", "τότε", "αλλιώς", "εάν_τέλος",
@@ -1016,6 +1024,7 @@ if (__name__ == "__main__"):
     token = 0
     eof_flag = False
     input_file = open(sys.argv[1], "r", encoding="utf-8", errors="replace")
+
 
     # Main call
     main()
