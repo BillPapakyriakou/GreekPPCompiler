@@ -329,6 +329,9 @@ class Parser:
         if token.family == "id":  # Ensure varlist starts with an id
             token = self.get_token()
 
+            while token.family == "id":  # If another ID appears without a comma, raise error
+                self.error("Expected ',' between variable names.")
+
             while token.recognised_string == ",":  # Handle commas
                 token = self.get_token()
 
